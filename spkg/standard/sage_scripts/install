@@ -363,9 +363,6 @@ export ZNPOLY
 CMAKE=`$newest cmake`
 export CMAKE
 
-JUDY=`$newest judy`
-export JUDY
-
 MESA=`$newest mesa`
 export MESA
 
@@ -378,17 +375,13 @@ export CONFIGOBJ
 MAYAVI=`$newest mayavi`
 export MAYAVI
 
-PYPARSING=`$newest pyparsing`
-export PYPARSING
+# yt stuff
 
-SWIG=`$newest swig`
-export SWIG
+HDF5=`$newest hdf5`
+export HDF5
 
-SFEPY=`$newest sfepy`
-export SFEPY
-
-HERMES2D=`$newest hermes2d`
-export HERMES2D
+H5PY=`$newest h5py`
+export H5PY
 
 ########
 # NOW do the actual build

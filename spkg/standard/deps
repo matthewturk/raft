@@ -30,16 +30,13 @@ all: $(INST)/$(SAGE_SCRIPTS) $(INST)/$(SAGE) \
      $(INST)/$(DSAGE) \
      $(INST)/$(SPD_NOTEBOOK) \
      $(INST)/$(CMAKE) \
-     $(INST)/$(JUDY) \
      $(INST)/$(MESA) \
      $(INST)/$(VTK) \
      $(INST)/$(CONFIGOBJ) \
      $(INST)/$(MAYAVI) \
-     $(INST)/$(PYPARSING) \
-     $(INST)/$(SWIG) \
-     $(INST)/$(SFEPY) \
-     $(INST)/$(HERMES2D)
-
+     $(INST)/$(HDF5) \
+     $(INST)/$(H5PY) \
+     $(INST)/$(CYTHON)
 
 base: $(BASE)
 
@@ -72,6 +69,12 @@ $(INST)/$(TERMCAP): $(BASE)
 
 $(INST)/$(READLINE): $(BASE)
 	$(SAGE_SPKG) $(READLINE) 2>&1
+
+$(INST)/$(HDF5): $(BASE) $(INST)/$(ZLIB)
+	$(SAGE_SPKG) $(HDF5) 2>&1
+
+$(INST)/$(H5PY): $(INST)/$(NUMPY) $(INST)/$(HDF5)
+	$(SAGE_SPKG) $(H5PY) 2>&1
 
 $(INST)/$(DOCUTILS): $(INST)/$(PYTHON)
 	$(SAGE_SPKG) $(DOCUTILS) 2>&1
@@ -196,9 +199,6 @@ $(INST)/$(SPD_NOTEBOOK): $(INST)/$(PYTHON) $(INST)/$(TWISTED)
 $(INST)/$(CMAKE):
 	$(SAGE_SPKG) $(CMAKE) 2>&1
 
-$(INST)/$(JUDY):
-	$(SAGE_SPKG) $(JUDY) 2>&1
-
 $(INST)/$(MESA):
 	$(SAGE_SPKG) $(MESA) 2>&1
 
@@ -210,18 +210,6 @@ $(INST)/$(CONFIGOBJ):
 
 $(INST)/$(MAYAVI): $(INST)/$(CONFIGOBJ) $(INST)/$(VTK)
 	$(SAGE_SPKG) $(MAYAVI) 2>&1
-
-$(INST)/$(PYPARSING): $(INST)/$(PYTHON)
-	$(SAGE_SPKG) $(PYPARSING) 2>&1
-
-$(INST)/$(SWIG): $(INST)/$(PYTHON)
-	$(SAGE_SPKG) $(SWIG) 2>&1
-
-$(INST)/$(SFEPY): $(INST)/$(PYPARSING) $(INST)/$(NUMPY) $(INST)/$(SCIPY) $(INST)/$(SWIG)
-	$(SAGE_SPKG) $(SFEPY) 2>&1
-
-$(INST)/$(HERMES2D): $(INST)/$(NUMPY) $(INST)/$(SCIPY) $(INST)/$(CYTHON)
-	$(SAGE_SPKG) $(HERMES2D) 2>&1
 
 $(INST)/$(TWISTEDWEB2): $(INST)/$(TWISTED)
 	$(SAGE_SPKG) $(TWISTEDWEB2) 2>&1
@@ -415,6 +403,8 @@ $(INST)/$(SAGE):  $(INST)/$(SAGE_SCRIPTS) \
 		  $(INST)/$(PYPROCESSING) \
 		  $(INST)/$(DOCUTILS) \
 		  $(INST)/$(SETUPTOOLS) \
+		  $(INST)/$(HDF5) \
+		  $(INST)/$(H5PY) \
 		  $(INST)/$(JINJA)
 	$(SAGE_SPKG) $(SAGE) 
 	$(MAKEREL)
