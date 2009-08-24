@@ -383,6 +383,9 @@ export HDF5
 H5PY=`$newest h5py`
 export H5PY
 
+YT=`$newest yt`
+export YT
+
 ########
 # NOW do the actual build
 

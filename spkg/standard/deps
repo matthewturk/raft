@@ -36,7 +36,8 @@ all: $(INST)/$(SAGE_SCRIPTS) $(INST)/$(SAGE) \
      $(INST)/$(MAYAVI) \
      $(INST)/$(HDF5) \
      $(INST)/$(H5PY) \
-     $(INST)/$(CYTHON)
+     $(INST)/$(CYTHON) \
+     $(INST)/$(YT)
 
 base: $(BASE)
 
@@ -75,6 +76,9 @@ $(INST)/$(HDF5): $(BASE) $(INST)/$(ZLIB)
 
 $(INST)/$(H5PY): $(INST)/$(NUMPY) $(INST)/$(HDF5)
 	$(SAGE_SPKG) $(H5PY) 2>&1
+
+$(INST)/$(YT): $(INST)/$(NUMPY) $(INST)/$(HDF5) $(INST)/$(H5PY)
+	$(SAGE_SPKG) $(YT) 2>&1
 
 $(INST)/$(DOCUTILS): $(INST)/$(PYTHON)
 	$(SAGE_SPKG) $(DOCUTILS) 2>&1
@@ -405,6 +409,7 @@ $(INST)/$(SAGE):  $(INST)/$(SAGE_SCRIPTS) \
 		  $(INST)/$(SETUPTOOLS) \
 		  $(INST)/$(HDF5) \
 		  $(INST)/$(H5PY) \
+		  $(INST)/$(YT) \
 		  $(INST)/$(JINJA)
 	$(SAGE_SPKG) $(SAGE) 
 	$(MAKEREL)
