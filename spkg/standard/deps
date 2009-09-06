@@ -30,10 +30,10 @@ all: $(INST)/$(SAGE_SCRIPTS) $(INST)/$(SAGE) \
      $(INST)/$(DSAGE) \
      $(INST)/$(SPD_NOTEBOOK) \
      $(INST)/$(CMAKE) \
-     $(INST)/$(MESA) \
-     $(INST)/$(VTK) \
+     #$(INST)/$(MESA) \
+     #$(INST)/$(VTK) \
      $(INST)/$(CONFIGOBJ) \
-     $(INST)/$(MAYAVI) \
+     #$(INST)/$(MAYAVI) \
      $(INST)/$(HDF5) \
      $(INST)/$(H5PY) \
      $(INST)/$(CYTHON) \
