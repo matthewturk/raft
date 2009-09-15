@@ -29,15 +29,16 @@ all: $(INST)/$(SAGE_SCRIPTS) $(INST)/$(SAGE) \
      $(INST)/$(JSMATH_SPKG) $(INST)/$(JQUERY_SPKG) $(INST)/$(JQUERYUI_SPKG) $(INST)/$(TINYMCE_SPKG) \
      $(INST)/$(DSAGE) \
      $(INST)/$(SPD_NOTEBOOK) \
-     $(INST)/$(CMAKE) \
-     $(INST)/$(MESA) \
-     $(INST)/$(VTK) \
      $(INST)/$(CONFIGOBJ) \
-     $(INST)/$(MAYAVI) \
      $(INST)/$(HDF5) \
      $(INST)/$(H5PY) \
      $(INST)/$(CYTHON) \
      $(INST)/$(YT)
+
+     #$(INST)/$(CMAKE) \
+     #$(INST)/$(MESA) \
+     #$(INST)/$(VTK) \
+     #$(INST)/$(MAYAVI) \
 
 base: $(BASE)
 
