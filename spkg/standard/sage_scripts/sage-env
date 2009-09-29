@@ -26,11 +26,11 @@
 SAVEDIR="`pwd`"
 
 if [ "$SAGE_ROOT" = "" ]; then
-    if [ -f spd -a -d spkg ]; then
+    if [ -f femhub -a -d spkg ]; then
        SAGE_ROOT="`pwd`"
        export SAGE_ROOT
     else
-       if [ -f ../../spd -a -d ../../spkg ]; then
+       if [ -f ../../femhub -a -d ../../spkg ]; then
            cd ../../
            SAGE_ROOT="`pwd`"
            export SAGE_ROOT
@@ -41,12 +41,12 @@ if [ "$SAGE_ROOT" = "" ]; then
         fi
     fi
 else
-    if [ -f spd -a -d spkg ]; then
+    if [ -f femhub -a -d spkg ]; then
        if [ "$SAGE_ROOT" != "`pwd`" ]; then
            echo "Warning: Attempted to overwrite SAGE_ROOT enviroment variable"             
        fi
     else
-       if [ -f ../../spd -a -d ../../spkg ]; then
+       if [ -f ../../femhub -a -d ../../spkg ]; then
            cd ../../
            if [ "$SAGE_ROOT" != "`pwd`" ]; then
               echo "Warning: Attempted to overwrite SAGE_ROOT enviroment variable"             
@@ -122,13 +122,15 @@ GP_DATA_DIR="$SAGE_LOCAL/share/pari" && export GP_DATA_DIR
 GPHELP="$SAGE_LOCAL/bin/gphelp" && export GPHELP
 GPDOCDIR="$SAGE_LOCAL/share/pari/doc" && export GPDOCDIR
 
+SINGULARPATH="$SAGE_LOCAL/share/singular" && export SINGULARPATH
+
 if [ "$SAGE_SERVER" = "" ]; then
     SAGE_SERVER="http://www.sagemath.org/"
     export SAGE_SERVER
 fi
 
 if [ "$DOT_SAGE" = "" ]; then
-    DOT_SAGE="$HOME/.spd/"
+    DOT_SAGE="$HOME/.femhub/"
     export DOT_SAGE
 fi
 
@@ -270,14 +272,6 @@ if [ "$MAKEFLAGS" != "" ]; then
     MFLAGS="$MAKEFLAGS"  && export MFLAGS
 fi
 
-# If the language encoding isn't set, set it to be US, since
-# Sage is currently mainly a US program, and leaving this off
-# leads to some really confusing errors -- see trac #276
-
-if [ "$LANG" = "" ]; then
-    LANG="en_US.UTF-8"  && export LANG
-fi 
-
 # Export variable names. 
 export SHAREDFLAGS
 export UNAME
@@ -291,7 +285,6 @@ echo "CC=$CC"
 echo "CFLAGS=$CFLAGS"
 echo "CXX=$CXX"
 echo "CXXFLAGS=$CXXFLAGS"
-echo "LANG=$LANG"
 echo "LD=$LD"
 echo "LDFLAGS=$LDFLAGS"
 echo "LN=$LN"
